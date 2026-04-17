@@ -1,0 +1,226 @@
+.summarySection {
+  position: relative;
+  z-index: var(--z-base);
+  padding: var(--space-2xl) var(--space-xl) var(--space-4xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.summaryTitle {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  letter-spacing: var(--ls-tight);
+}
+
+.topicTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.topicTag {
+  padding: var(--space-xs) var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+
+.topicTag:hover {
+  background: var(--bg-glass-strong);
+  border-color: var(--border-default);
+  color: var(--text-primary);
+}
+
+/* ── Summary Card ───────────────────────────────────────────────────────── */
+.summaryCard {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+  transition: all var(--transition-base);
+}
+
+.summaryCard:hover {
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-glow);
+}
+
+.cardLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  margin-bottom: var(--space-lg);
+}
+
+.cardLabelIcon {
+  font-size: var(--fs-base);
+}
+
+.summaryText {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  white-space: pre-wrap;
+}
+
+/* ── Key Points ─────────────────────────────────────────────────────────── */
+.keyPointsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.keyPoint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.keyPoint:hover {
+  background: var(--bg-glass-strong);
+  border-color: var(--border-default);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.keyPointNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.keyPointText {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-normal);
+}
+
+/* ── Copy Button ────────────────────────────────────────────────────────── */
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copyBtn:hover {
+  background: var(--bg-glass-strong);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.copied {
+  color: var(--success);
+  border-color: rgba(0, 200, 83, 0.3);
+}
+
+/* ── Loading Skeleton ───────────────────────────────────────────────────── */
+.skeleton {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-xl);
+}
+
+.skeletonTitle {
+  height: 32px;
+  width: 60%;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.skeletonTags {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.skeletonTag {
+  height: 28px;
+  width: 80px;
+  border-radius: var(--radius-full);
+}
+
+.skeletonCard {
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-xl);
+  border: 1px solid var(--border-subtle);
+}
+
+.skeletonLine {
+  height: 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.skeletonLine:last-child {
+  width: 70%;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .summarySection {
+    padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  }
+
+  .keyPointsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryCard {
+    padding: var(--space-lg);
+  }
+
+  .summaryTitle {
+    font-size: var(--fs-xl);
+  }
+}
