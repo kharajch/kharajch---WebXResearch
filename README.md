@@ -1,36 +1,245 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <img src="public/logo.png" alt="WebXResearch Logo" width="120" />
+</p>
 
-## Getting Started
+<h1 align="center">kharajch — WebXResearch</h1>
 
-First, run the development server:
+<p align="center">
+  <strong>AI-Powered Web Research Summarizer</strong><br/>
+  Paste any URL. Get instant summaries, key insights, and follow-up answers — powered by Google Gemini.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/LangChain-🦜-white?style=for-the-badge" alt="LangChain" />
+  <img src="https://img.shields.io/badge/Gemini_3.1_Pro-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini" />
+</p>
+
+---
+
+## ✨ Overview
+
+**WebXResearch** turns information overload into instant clarity. Drop in a link to any article, blog, documentation, or paper — and the app fetches the content, processes it through Google Gemini, and returns a beautifully structured summary complete with key takeaways and topic tags.
+
+Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions directly against the webpage's context, just like talking to a research assistant who already read the whole page for you.
+
+---
+
+## 🎥 Features
+
+| Feature | Description |
+|---|---|
+| 🔗 **URL Summarization** | Paste any URL to get a structured summary, key points, and topic tags |
+| 💬 **Contextual Chat** | Ask follow-up questions against the summarized content |
+| 📚 **Research History** | Past sessions saved in `localStorage` — pick up where you left off |
+| 🌐 **3D Background** | Immersive Three.js particle scene rendered with React Three Fiber |
+| 🎨 **Glassmorphic UI** | Black & white frosted-glass aesthetic with smooth animations |
+| ⚡ **Streaming UX** | Loading skeletons, smooth scrolling, and animated transitions |
+| 🛡️ **Error Handling** | User-friendly error messages at every layer (network, API, AI) |
+
+---
+
+## 🏗️ Architecture
+
+```
+┌──────────────────────────────┐       ┌──────────────────────────────────┐
+│         FRONTEND             │       │           BACKEND                │
+│  Next.js 16 + React 19      │       │  Python FastAPI + LangChain      │
+│                              │       │                                  │
+│  ┌────────┐  ┌────────────┐  │  POST │  ┌──────────────┐               │
+│  │ Hero   │  │ Scene3D    │  │ ─────►│  │ WebBaseLoader│ Fetch website  │
+│  └────────┘  │ (Three.js) │  │  /research  └──────┬───────┘             │
+│  ┌────────┐  └────────────┘  │       │         ▼                        │
+│  │SearchBar│                 │       │  ┌──────────────────┐            │
+│  └───┬────┘                  │       │  │ TextSplitter     │            │
+│      ▼                       │       │  │ (Recursive Char) │            │
+│  ┌────────┐                  │       │  └──────┬───────────┘            │
+│  │Summary │  Key Points,     │       │         ▼                        │
+│  │Display │  Topics, Title   │  ◄────│  ┌──────────────────┐            │
+│  └───┬────┘                  │  JSON │  │ Gemini 3.1 Pro   │            │
+│      ▼                       │       │  │ Structured Output│            │
+│  ┌────────┐                  │  POST │  └──────────────────┘            │
+│  │ChatBox │ ────────────────►│ ─────►│                                  │
+│  └────────┘                  │  /chat│  ┌──────────────────┐            │
+│  ┌────────────┐              │  ◄────│  │ Gemini (Chat)    │            │
+│  │ChatHistory │ localStorage │       │  └──────────────────┘            │
+│  └────────────┘              │       │                                  │
+└──────────────────────────────┘       └──────────────────────────────────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Frontend
+- **[Next.js 16](https://nextjs.org/)** — App Router, server components, file-based routing
+- **[React 19](https://react.dev/)** — Latest React with hooks and Suspense
+- **[React Three Fiber](https://docs.pmnd.rs/react-three-fiber)** + **[Three.js](https://threejs.org/)** — 3D particle background
+- **[Framer Motion](https://motion.dev/)** — Declarative animations
+- **[GSAP](https://gsap.com/)** — High-performance timeline animations
+- **Vanilla CSS Modules** — Scoped styling with CSS custom properties (no Tailwind)
 
-## Learn More
+### Backend
+- **[FastAPI](https://fastapi.tiangolo.com/)** — High-performance async Python API
+- **[LangChain](https://python.langchain.com/)** — LLM orchestration framework
+- **[Google Gemini 3.1 Pro](https://ai.google.dev/)** — State-of-the-art language model
+- **[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)** — Web content extraction via `WebBaseLoader`
+- **Pydantic** — Request/response validation with structured output
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
 
-## Deploy on Vercel
+- **Node.js** ≥ 18
+- **Python** ≥ 3.10
+- A **[Google AI API Key](https://aistudio.google.com/apikey)** for Gemini
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Clone the Repository
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git clone https://github.com/kharajch/kharajch---WebXResearch.git
+cd kharajch---WebXResearch
+```
+
+### 2. Set Up Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+GEMINI_API_KEY=your_google_ai_api_key_here
+```
+
+### 3. Install & Run the Frontend
+
+```bash
+npm install
+npm run dev
+```
+
+The frontend will be live at **http://localhost:3000**.
+
+### 4. Install & Run the Backend
+
+```bash
+cd backend
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS/Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+The API will be live at **http://localhost:8000**.
+
+---
+
+## 📁 Project Structure
+
+```
+kharajch---WebXResearch/
+├── app/                          # Next.js App Router
+│   ├── components/               # React UI components
+│   │   ├── Scene3D.js            # Three.js 3D particle background
+│   │   ├── Hero.js               # Animated hero section with logo
+│   │   ├── SearchBar.js          # URL input with validation
+│   │   ├── Summary.js            # AI summary display + skeleton loader
+│   │   ├── ChatBox.js            # Follow-up chat interface
+│   │   ├── ChatHistory.js        # Saved research sessions
+│   │   ├── Footer.js             # Site footer
+│   │   ├── ErrorMessage.js       # Dismissible error alerts
+│   │   └── *.module.css          # Scoped component styles
+│   ├── globals.css               # Design system, tokens & theme
+│   ├── layout.js                 # Root layout with SEO metadata
+│   └── page.js                   # Main page orchestrator
+├── backend/                      # Python FastAPI backend
+│   ├── main.py                   # API routes & LangChain pipeline
+│   ├── requirements.txt          # Python dependencies
+│   └── venv/                     # Virtual environment (not committed)
+├── public/                       # Static assets
+│   ├── logo.png                  # App logo
+│   └── favicon.png               # Browser favicon
+├── .env                          # Environment variables (not committed)
+└── package.json                  # Node.js dependencies & scripts
+```
+
+---
+
+## 🔌 API Reference
+
+### `POST /research`
+
+Summarize a webpage.
+
+**Request:**
+```json
+{
+  "url": "https://example.com/article"
+}
+```
+
+**Response:**
+```json
+{
+  "title": "Article Title",
+  "summary": "A comprehensive 3-5 paragraph summary...",
+  "key_points": ["Point 1", "Point 2", "..."],
+  "topics": ["Topic A", "Topic B", "..."]
+}
+```
+
+### `POST /chat`
+
+Ask a follow-up question.
+
+**Request:**
+```json
+{
+  "question": "What are the main findings?",
+  "context": "The research summary context...",
+  "history": [
+    { "role": "user", "content": "Previous question" },
+    { "role": "assistant", "content": "Previous answer" }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "answer": "Based on the research, the main findings are..."
+}
+```
+
+### `GET /`
+
+Health check — returns `{ "status": "ok" }`.
+
+---
+
+## 🎨 Design Philosophy
+
+- **Black & White Glassmorphism** — Frosted-glass panels with subtle transparency over an immersive 3D background
+- **Micro-Animations** — Every interaction has feedback: hover effects, smooth reveals, loading skeletons
+- **3D Immersion** — A floating particle system (React Three Fiber) provides depth and movement
+- **Vanilla CSS** — No utility-class bloat; pure CSS Modules with custom properties for a clean, maintainable design system
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Built with ☕ and curiosity by <strong>kharajch</strong>
+</p>
