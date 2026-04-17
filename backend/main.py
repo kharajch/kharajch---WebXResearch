@@ -45,7 +45,7 @@ app.add_middleware(
 def get_llm():
     """Creates and returns the Gemini LLM instance."""
     return ChatGoogleGenerativeAI(
-        model="gemini-3.1-pro",
+        model="gemini-3-pro-preview",
         google_api_key=GEMINI_API_KEY,
         temperature=0.3,
     )
@@ -259,7 +259,16 @@ async def chat(request: ChatRequest):
                 detail=f"The AI model failed to generate an answer. Error: {str(e)}",
             )
 
-        return ChatResponse(answer=response.content)
+        # Handle cases where content is a list of content blocks
+        # (e.g., [{'type': 'text', 'text': '...'}]) instead of a plain string
+        answer_content = response.content
+        if isinstance(answer_content, list):
+            answer_content = "".join(
+                block.get("text", "") if isinstance(block, dict) else str(block)
+                for block in answer_content
+            )
+
+        return ChatResponse(answer=answer_content)
 
     except HTTPException:
         raise
