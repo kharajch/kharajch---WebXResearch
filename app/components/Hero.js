@@ -39,7 +39,6 @@ export default function Hero() {
       <motion.div
         ref={logoRef}
         className={styles.logoContainer}
-        initial={{ opacity: 0 }}
         whileHover={{ scale: 1.05 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >

@@ -111,7 +111,7 @@
 /* ── Scroll Indicator ───────────────────────────────────────────────────── */
 .scrollIndicator {
   position: absolute;
-  bottom: var(--space-2xl);
+  bottom: var(--space-md);
   display: flex;
   flex-direction: column;
   align-items: center;
