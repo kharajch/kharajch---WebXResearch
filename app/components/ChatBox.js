@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiMessageSquare, FiSend } from 'react-icons/fi';
 import styles from './ChatBox.module.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'production' ? '/_/backend' : 'http://localhost:8000');
 
 export default function ChatBox({ context, onError }) {
   const [messages, setMessages] = useState([]);

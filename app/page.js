@@ -11,7 +11,7 @@ import ErrorMessage from './components/ErrorMessage';
 
 const Scene3D = lazy(() => import('./components/Scene3D'));
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'production' ? '/_/backend' : 'http://localhost:8000');
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
