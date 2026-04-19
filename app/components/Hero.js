@@ -68,7 +68,7 @@ export default function Hero() {
         transition={{ delay: 0.8, duration: 0.8 }}
       >
         AI-powered web research summarizer. Paste any URL and get instant,
-        comprehensive summaries with key insights — powered by Google Gemini.
+        comprehensive summaries with key insights — powered by Ollama.
       </motion.p>
 
       {/* Stats */}

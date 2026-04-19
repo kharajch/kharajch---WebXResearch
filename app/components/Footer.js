@@ -26,7 +26,7 @@ export default function Footer() {
           <div className={styles.footerDivider} />
           <div className={styles.footerPowered}>
             <FiZap className={styles.footerPoweredIcon} />
-            Powered by Google Gemini
+            Powered by Ollama
           </div>
         </div>
       </div>

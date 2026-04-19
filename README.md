@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>AI-Powered Web Research Summarizer</strong><br/>
-  Paste any URL. Get instant summaries, key insights, and follow-up answers — powered by Google Gemini.
+  Paste any URL. Get instant summaries, key insights, and follow-up answers — powered by Ollama.
 </p>
 
 <p align="center">
@@ -14,14 +14,14 @@
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
   <img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" />
   <img src="https://img.shields.io/badge/LangChain-🦜-white?style=for-the-badge" alt="LangChain" />
-  <img src="https://img.shields.io/badge/Gemini_3.1_Pro-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini" />
+  <img src="https://img.shields.io/badge/Ollama-4285F4?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" />
 </p>
 
 ---
 
 ## ✨ Overview
 
-**WebXResearch** turns information overload into instant clarity. Drop in a link to any article, blog, documentation, or paper — and the app fetches the content, processes it through Google Gemini, and returns a beautifully structured summary complete with key takeaways and topic tags.
+**WebXResearch** turns information overload into instant clarity. Drop in a link to any article, blog, documentation, or paper — and the app fetches the content, processes it through Ollama, and returns a beautifully structured summary complete with key takeaways and topic tags.
 
 Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions directly against the webpage's context, just like talking to a research assistant who already read the whole page for you.
 
@@ -58,12 +58,12 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 │  ┌────────┐                  │       │  └──────┬───────────┘            │
 │  │Summary │  Key Points,     │       │         ▼                        │
 │  │Display │  Topics, Title   │  ◄────│  ┌──────────────────┐            │
-│  └───┬────┘                  │  JSON │  │ Gemini 3.1 Pro   │            │
+│  └───┬────┘                  │  JSON │  │ Ollama           │            │
 │      ▼                       │       │  │ Structured Output│            │
 │  ┌────────┐                  │  POST │  └──────────────────┘            │
 │  │ChatBox │ ────────────────►│ ─────►│                                  │
 │  └────────┘                  │  /chat│  ┌──────────────────┐            │
-│  ┌────────────┐              │  ◄────│  │ Gemini (Chat)    │            │
+│  ┌────────────┐              │  ◄────│  │ Ollama (Chat)    │            │
 │  │ChatHistory │ localStorage │       │  └──────────────────┘            │
 │  └────────────┘              │       │                                  │
 └──────────────────────────────┘       └──────────────────────────────────┘
@@ -84,7 +84,7 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 ### Backend
 - **[FastAPI](https://fastapi.tiangolo.com/)** — High-performance async Python API
 - **[LangChain](https://python.langchain.com/)** — LLM orchestration framework
-- **[Google Gemini 3.1 Pro](https://ai.google.dev/)** — State-of-the-art language model
+- **[Ollama](https://ollama.com/)** — State-of-the-art language model
 - **[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)** — Web content extraction via `WebBaseLoader`
 - **Pydantic** — Request/response validation with structured output
 
@@ -96,7 +96,7 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 
 - **Node.js** ≥ 18
 - **Python** ≥ 3.10
-- A **[Google AI API Key](https://aistudio.google.com/apikey)** for Gemini
+- **[Ollama](https://ollama.com/)** for local LLM
 
 ### 1. Clone the Repository
 
@@ -236,10 +236,10 @@ Health check — returns `{ "status": "ok" }`.
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source.
 
 ---
 
 <p align="center">
-  Built with ☕ and curiosity by <strong>kharajch</strong>
+  Built with ☕ and curiosity by <strong>@kharajch</strong>
 </p>

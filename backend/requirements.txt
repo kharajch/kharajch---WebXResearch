@@ -3,7 +3,7 @@ uvicorn
 langchain
 langchain-core
 langchain-community
-langchain-google-genai
+langchain-ollama
 python-dotenv
 requests
 beautifulsoup4

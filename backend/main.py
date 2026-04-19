@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_ollama import ChatOllama
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_community.document_loaders import WebBaseLoader
@@ -21,9 +21,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # ── Load environment variables ──────────────────────────────────────────────
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY or GEMINI_API_KEY == "Your_API_KEY":
-    print("⚠️  WARNING: GEMINI_API_KEY is not set. Please update your .env file.")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
+
+if not OLLAMA_BASE_URL or not OLLAMA_MODEL:
+    print("⚠️  WARNING: OLLAMA_BASE_URL or OLLAMA_MODEL is not set. Please update your .env file.")
 
 # ── FastAPI App ─────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -44,9 +46,9 @@ app.add_middleware(
 # ── LLM Setup ──────────────────────────────────────────────────────────────
 def get_llm():
     """Creates and returns the Gemini LLM instance."""
-    return ChatGoogleGenerativeAI(
-        model="gemini-3-pro-preview",
-        google_api_key=GEMINI_API_KEY,
+    return ChatOllama(
+        model=OLLAMA_MODEL,
+        base_url=OLLAMA_BASE_URL,
         temperature=0.3,
     )
 
