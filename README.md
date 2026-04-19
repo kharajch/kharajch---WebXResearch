@@ -74,6 +74,7 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **[Next.js 16](https://nextjs.org/)** — App Router, server components, file-based routing
 - **[React 19](https://react.dev/)** — Latest React with hooks and Suspense
 - **[React Three Fiber](https://docs.pmnd.rs/react-three-fiber)** + **[Three.js](https://threejs.org/)** — 3D particle background
@@ -82,6 +83,7 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 - **Vanilla CSS Modules** — Scoped styling with CSS custom properties (no Tailwind)
 
 ### Backend
+
 - **[FastAPI](https://fastapi.tiangolo.com/)** — High-performance async Python API
 - **[LangChain](https://python.langchain.com/)** — LLM orchestration framework
 - **[Ollama](https://ollama.com/)** — State-of-the-art language model
@@ -110,7 +112,8 @@ cd kharajch---WebXResearch
 Create a `.env` file in the project root:
 
 ```env
-GEMINI_API_KEY=your_google_ai_api_key_here
+OLLAMA_BASE_URL=http://localhost:11434 : default
+OLLAMA_MODEL=your_ollama_model_here
 ```
 
 ### 3. Install & Run the Frontend
@@ -120,7 +123,7 @@ npm install
 npm run dev
 ```
 
-The frontend will be live at **http://localhost:3000**.
+The frontend will be live at **<http://localhost:3000>**.
 
 ### 4. Install & Run the Backend
 
@@ -138,7 +141,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The API will be live at **http://localhost:8000**.
+The API will be live at **<http://localhost:8000>**.
 
 ---
 
@@ -180,6 +183,7 @@ kharajch---WebXResearch/
 Summarize a webpage.
 
 **Request:**
+
 ```json
 {
   "url": "https://example.com/article"
@@ -187,6 +191,7 @@ Summarize a webpage.
 ```
 
 **Response:**
+
 ```json
 {
   "title": "Article Title",
@@ -201,6 +206,7 @@ Summarize a webpage.
 Ask a follow-up question.
 
 **Request:**
+
 ```json
 {
   "question": "What are the main findings?",
@@ -213,6 +219,7 @@ Ask a follow-up question.
 ```
 
 **Response:**
+
 ```json
 {
   "answer": "Based on the research, the main findings are..."
