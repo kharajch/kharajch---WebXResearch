@@ -1,7 +1,7 @@
 # AGENTS.md — kharajch---WebXResearch
 
 ## Project Context
-This is a full-stack AI web research summarizer application. The project uses a Next.js frontend with a Python FastAPI backend powered by LangChain and Google Gemini 3.1 Pro.
+This is a full-stack AI web research summarizer application. The project uses a Next.js frontend with a Python FastAPI backend powered by LangChain and NVIDIA NIM (meta/llama-3.1-70b-instruct).
 
 ## Project Structure
 ```
@@ -51,6 +51,6 @@ cd backend && venv\Scripts\activate && uvicorn main:app --reload
 ```
 
 ## Important Notes
-- Set `GEMINI_API_KEY` in `.env` before running
+- Set `NVIDIA_API_KEY` in `.env` before running
 - Backend CORS is configured for `localhost:3000`
 - The frontend expects the backend at `http://localhost:8000`

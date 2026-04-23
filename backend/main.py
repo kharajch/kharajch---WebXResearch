@@ -1,6 +1,6 @@
 """
 kharajch---WebXResearch Backend
-FastAPI + LangChain powered web research summarizer using Google Gemini 3.1 Pro
+FastAPI + LangChain powered web research summarizer using NVIDIA NIM
 """
 
 import os
@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from langchain_ollama import ChatOllama
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_community.document_loaders import WebBaseLoader
@@ -21,11 +21,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 # ── Load environment variables ──────────────────────────────────────────────
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
 
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY")
+NVIDIA_MODEL = os.getenv("NVIDIA_MODEL")
 
-if not OLLAMA_BASE_URL or not OLLAMA_MODEL:
-    print("⚠️  WARNING: OLLAMA_BASE_URL or OLLAMA_MODEL is not set. Please update your .env file.")
+if not NVIDIA_API_KEY:
+    print("⚠️  WARNING: NVIDIA_API_KEY is not set. Please update your .env file.")
 
 # ── FastAPI App ─────────────────────────────────────────────────────────────
 app = FastAPI(
@@ -37,7 +37,7 @@ app = FastAPI(
 # CORS — allow Next.js dev server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -45,10 +45,9 @@ app.add_middleware(
 
 # ── LLM Setup ──────────────────────────────────────────────────────────────
 def get_llm():
-    """Creates and returns the Gemini LLM instance."""
-    return ChatOllama(
-        model=OLLAMA_MODEL,
-        base_url=OLLAMA_BASE_URL,
+    """Creates and returns the NVIDIA LLM instance."""
+    return ChatNVIDIA(
+        model=NVIDIA_MODEL,
         temperature=0.3,
     )
 

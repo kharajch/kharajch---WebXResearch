@@ -6,22 +6,22 @@
 
 <p align="center">
   <strong>AI-Powered Web Research Summarizer</strong><br/>
-  Paste any URL. Get instant summaries, key insights, and follow-up answers — powered by Ollama.
+  Paste any URL. Get instant summaries, key insights, and follow-up answers — powered by NVIDIA NIM.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
   <img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" />
   <img src="https://img.shields.io/badge/LangChain-🦜-white?style=for-the-badge" alt="LangChain" />
-  <img src="https://img.shields.io/badge/Ollama-4285F4?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" />
+  <img src="https://img.shields.io/badge/NVIDIA-NIM-76B900?style=for-the-badge&logo=nvidia&logoColor=white" alt="NVIDIA NIM" />
 </p>
 
 ---
 
 ## ✨ Overview
 
-**WebXResearch** turns information overload into instant clarity. Drop in a link to any article, blog, documentation, or paper — and the app fetches the content, processes it through Ollama, and returns a beautifully structured summary complete with key takeaways and topic tags.
+**WebXResearch** turns information overload into instant clarity. Drop in a link to any article, blog, documentation, or paper — and the app fetches the content, processes it through NVIDIA NIM (meta/llama-3.1-70b-instruct), and returns a beautifully structured summary complete with key takeaways and topic tags.
 
 Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions directly against the webpage's context, just like talking to a research assistant who already read the whole page for you.
 
@@ -58,14 +58,14 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 │  ┌────────┐                  │       │  └──────┬───────────┘            │
 │  │Summary │  Key Points,     │       │         ▼                        │
 │  │Display │  Topics, Title   │  ◄────│  ┌──────────────────┐            │
-│  └───┬────┘                  │  JSON │  │ Ollama           │            │
-│      ▼                       │       │  │ Structured Output│            │
-│  ┌────────┐                  │  POST │  └──────────────────┘            │
-│  │ChatBox │ ────────────────►│ ─────►│                                  │
-│  └────────┘                  │  /chat│  ┌──────────────────┐            │
-│  ┌────────────┐              │  ◄────│  │ Ollama (Chat)    │            │
-│  │ChatHistory │ localStorage │       │  └──────────────────┘            │
-│  └────────────┘              │       │                                  │
+│  └───┬────┘                  │  JSON │  │ NVIDIA NIM       │            │
+│      ▼                       │       │  │ (meta/llama-3.1) │            │
+│  ┌────────┐                  │  POST │  │ Structured Output│            │
+│  │ChatBox │ ────────────────►│ ─────►│  └──────────────────┘            │
+│  └────────┘                  │  /chat│                                  │
+│  ┌────────────┐              │  ◄────│  ┌──────────────────┐            │
+│  │ChatHistory │ localStorage │       │  │ NVIDIA NIM (Chat)│            │
+│  └────────────┘              │       │  └──────────────────┘            │
 └──────────────────────────────┘       └──────────────────────────────────┘
 ```
 
@@ -86,7 +86,7 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 
 - **[FastAPI](https://fastapi.tiangolo.com/)** — High-performance async Python API
 - **[LangChain](https://python.langchain.com/)** — LLM orchestration framework
-- **[Ollama](https://ollama.com/)** — State-of-the-art language model
+- **[NVIDIA NIM](https://www.nvidia.com/en-us/ai-data-science/generative-ai/nim/)** — Production-ready AI inference microservices
 - **[BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)** — Web content extraction via `WebBaseLoader`
 - **Pydantic** — Request/response validation with structured output
 
@@ -97,8 +97,8 @@ Need to go deeper? The built-in **AI Chat** lets you ask follow-up questions dir
 ### Prerequisites
 
 - **Node.js** ≥ 18
-- **Python** ≥ 3.10
-- **[Ollama](https://ollama.com/)** for local LLM
+- **Python** ≥ 3.12
+- **NVIDIA API Key** (Get one at [build.nvidia.com](https://build.nvidia.com/))
 
 ### 1. Clone the Repository
 
@@ -112,8 +112,8 @@ cd kharajch---WebXResearch
 Create a `.env` file in the project root:
 
 ```env
-OLLAMA_BASE_URL=http://localhost:11434 : default
-OLLAMA_MODEL=your_ollama_model_here
+NVIDIA_API_KEY=your_nvidia_api_key_here
+NVIDIA_MODEL=meta/llama-3.1-70b-instruct
 ```
 
 ### 3. Install & Run the Frontend
