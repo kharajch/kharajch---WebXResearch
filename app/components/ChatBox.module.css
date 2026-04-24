@@ -15,7 +15,6 @@
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: var(--ls-wider);
-  margin: 0;
   margin-bottom: var(--space-lg);
 }
 

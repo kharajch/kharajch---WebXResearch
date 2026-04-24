@@ -8,7 +8,7 @@ import styles from './ChatHistory.module.css';
 export default function ChatHistory({ onLoadSession }) {
   const [sessions, setSessions] = useState([]);
 
-  /* --- Load sessions from localStorage ----------------------------------- */
+  /* ── Load sessions from localStorage ─────────────────────────────────── */
   useEffect(() => {
     try {
       const saved = localStorage.getItem('wxr_research_history');
@@ -21,7 +21,7 @@ export default function ChatHistory({ onLoadSession }) {
     }
   }, []);
 
-  /* --- Clear history ----------------------------------------------------- */
+  /* ── Clear history ───────────────────────────────────────────────────── */
   const handleClear = () => {
     try {
       localStorage.removeItem('wxr_research_history');
@@ -37,10 +37,10 @@ export default function ChatHistory({ onLoadSession }) {
   return (
     <section className={styles.historySection} id="history">
       <div className={styles.historyHeader}>
-        <h2 className={styles.historyLabel}>
+        <div className={styles.historyLabel}>
           <FiClock className={styles.historyLabelIcon} />
           Research History
-        </h2>
+        </div>
         <button
           className={styles.clearBtn}
           onClick={handleClear}

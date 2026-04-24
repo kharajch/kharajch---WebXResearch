@@ -21,7 +21,6 @@
   font-weight: var(--fw-semibold);
   color: var(--text-tertiary);
   text-transform: uppercase;
-  margin: 0;
   letter-spacing: var(--ls-wider);
 }
 
