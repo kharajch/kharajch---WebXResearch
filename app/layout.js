@@ -3,13 +3,13 @@ import "./globals.css";
 export const metadata = {
   title: "kharajch---WebXResearch | AI-Powered Web Research Summarizer",
   description:
-    "Summarize any webpage instantly with AI. Paste a URL and get comprehensive research summaries, key insights, and follow-up answers powered by Ollama.",
+    "Summarize any webpage instantly with AI. Paste a URL and get comprehensive research summaries, key insights, and follow-up answers powered by Nvidia NIM.",
   keywords: [
     "web research",
     "AI summarizer",
     "webpage summary",
     "research tool",
-    "Ollama",
+    "Nvidia NIM",
     "kharajch",
     "WebXResearch",
   ],

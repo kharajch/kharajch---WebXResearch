@@ -26,7 +26,7 @@ export default function Footer() {
           <div className={styles.footerDivider} />
           <div className={styles.footerPowered}>
             <FiZap className={styles.footerPoweredIcon} />
-            Powered by Ollama
+            Powered by Nvidia NIM
           </div>
         </div>
       </div>
