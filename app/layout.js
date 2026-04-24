@@ -12,6 +12,9 @@ export const metadata = {
     "Nvidia NIM",
     "kharajch",
     "WebXResearch",
+    "Kharaj Chakraborty",
+    "kharajch--webxresearch",
+
   ],
   authors: [{ name: "kharajch" }],
   icons: {
@@ -20,7 +23,7 @@ export const metadata = {
   openGraph: {
     title: "kharajch---WebXResearch",
     description:
-      "AI-powered web research summarizer. Get instant summaries and insights from any webpage.",
+      "AI-powered web research summarizer. Get instant summaries and insights from any webpage --- Created by Kharaj Chakraborty (@kharajch)",
     type: "website",
   },
 };
