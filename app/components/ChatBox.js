@@ -14,7 +14,7 @@ export default function ChatBox({ context, onError }) {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  /* ── Load from localStorage ──────────────────────────────────────────── */
+  /* --- Load from localStorage -------------------------------------------- */
   useEffect(() => {
     try {
       const saved = localStorage.getItem('wxr_chat_messages');
@@ -27,7 +27,7 @@ export default function ChatBox({ context, onError }) {
     }
   }, []);
 
-  /* ── Save to localStorage ────────────────────────────────────────────── */
+  /* --- Save to localStorage ---------------------------------------------- */
   useEffect(() => {
     try {
       if (messages.length > 0) {
@@ -41,12 +41,12 @@ export default function ChatBox({ context, onError }) {
     }
   }, [messages, onError]);
 
-  /* ── Auto scroll ─────────────────────────────────────────────────────── */
+  /* --- Auto scroll ------------------------------------------------------- */
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  /* ── Send Message ────────────────────────────────────────────────────── */
+  /* --- Send Message ------------------------------------------------------ */
   const handleSend = async () => {
     if (!input.trim() || isTyping) return;
 
@@ -102,10 +102,10 @@ export default function ChatBox({ context, onError }) {
 
   return (
     <section className={styles.chatSection} id="chat">
-      <div className={styles.chatLabel}>
+      <h2 className={styles.chatLabel}>
         <FiMessageSquare className={styles.chatLabelIcon} />
         Ask Follow-up Questions
-      </div>
+      </h2>
 
       {/* Messages */}
       <div className={styles.messagesContainer} id="chat-messages">

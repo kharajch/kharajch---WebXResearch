@@ -10,19 +10,19 @@ function Particles({ count = 200 }) {
   const mouseRef = useRef({ x: 0, y: 0 });
 
   const particles = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
-    const speeds = new Float32Array(count);
+    const pos = new Float32Array(count * 3);
+    const sz = new Float32Array(count);
+    const spd = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
-      sizes[i] = Math.random() * 2 + 0.5;
-      speeds[i] = Math.random() * 0.5 + 0.1;
+      pos[i * 3] = (Math.random() - 0.5) * 20;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 20;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 10;
+      sz[i] = Math.random() * 2 + 0.5;
+      spd[i] = Math.random() * 0.5 + 0.1;
     }
 
-    return { positions, sizes, speeds };
+    return { positions: pos, sizes: sz, speeds: spd };
   }, [count]);
 
   useFrame((state) => {

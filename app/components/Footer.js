@@ -13,7 +13,7 @@ export default function Footer() {
         <div className={styles.footerBrand}>
           <Image
             src="/logo.png"
-            alt="Logo"
+            alt="WebXResearch Logo"
             width={32}
             height={32}
             className={styles.footerLogo}
